@@ -1,0 +1,1 @@
+export const base_url= "www.thecocktaildb.com/api/json/v1/1/"
