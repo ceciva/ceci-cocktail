@@ -1,12 +1,15 @@
-import { StyleSheet, Text, View, FlatList} from 'react-native'
+import { StyleSheet, Text, View, FlatList, Image} from 'react-native'
 import React from 'react'
 import Search from '../components/Search';
 import Header from '../components/Header';
 import { drinks } from '../data/drinks';
 import DrinkItem from '../components/DrinkItem';
+import { colors } from '../theme/colors';
+
+
 const Drinks = () => {
   return (
-    <View>
+    <View style={ styles.container}>
         <Header title= "Drinks"/>
         <Search/>
         
@@ -16,7 +19,7 @@ const Drinks = () => {
             keyExtractor={drinks.id}
             renderItem={({item})=> <DrinkItem item={item}/>}
         />
-
+        
         
     </View>
   )
@@ -24,5 +27,8 @@ const Drinks = () => {
 
 export default Drinks
 
-const styles = StyleSheet.create({  
+const styles = StyleSheet.create({ 
+  container: {
+    backgroundColor: colors.lightAqua
+ }
 })

@@ -1,6 +1,9 @@
 export const colors={
-    navy: "#363062",
-    lightnavy: "#4D4C7D",
-    orange: "#F99417",
-    white: "#EEEEEE"
+    violet: "#614BC3",
+    turquesa: "#33BBC5",
+    heavyAqua: "#85E6C5",
+    lightAqua: "#C8FFE0",
+    white: "#FFFFFF",
+    black: "#040D12"
+
 };

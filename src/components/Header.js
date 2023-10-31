@@ -19,14 +19,15 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent:"center",
         alignItems: "center",
-        backgroundColor: colors.navy,
+        backgroundColor: colors.lightAqua,
         
     
       },
       text:{
-        color: colors.orange,
+        color: colors.violet,
         fontSize: 25,
-        // fontWeight: 700,
+        fontWeight: "600"
+        
       }
       
 })

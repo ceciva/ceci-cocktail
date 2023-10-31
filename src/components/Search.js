@@ -1,9 +1,11 @@
 import { StyleSheet, TextInput, View, Pressable } from 'react-native'
-import React from 'react'
+import React, {useState} from 'react'
 import { colors } from '../theme/colors'
 import { Feather } from '@expo/vector-icons';
 
-const Search = ({text, setText})=>{
+const Search = ()=>{
+    const [text, setText]= useState("");
+    
 
 const clearText=()=>{
    setText(null); 
@@ -14,7 +16,7 @@ const clearText=()=>{
             style= {styles.input} 
             onChangeText={(value)=>setText(value)}
             value={text}
-            placeholder= "Busca un producto"
+            placeholder = "Name of cocktail"
         />   
 
             <Pressable onPress={() => clearText()}>
@@ -30,28 +32,29 @@ export default Search
 
 const styles = StyleSheet.create({
     container:{
-        backgroundColor: "white",
+        
+        backgroundColor: colors.white,
         justifyContent: "center",
-        flexDirection: "row",
+        flexDirection: "row", 
         alignItems: "center",
-        marginVertical: 20,
+        marginVertical: 10,
 
     },
     searchContainer:{
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        marginHorizontal: 0,
+        marginHorizontal: 15,
     },
     input:{
         // fontFamily: "dancing",
         width: "88%",
         fontSize: 20,
         margin: 2,
-        color: colors.navy,
+        color: colors.violet,
         padding: 5,
-        borderColor: colors.lightnavy,
-        borderWidth: 2,
+        borderColor: colors.violet,
+        borderWidth: 4,
         borderRadius: 20,
         textAlign: "center"
 

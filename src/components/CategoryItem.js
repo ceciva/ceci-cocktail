@@ -1,27 +1,35 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { colors } from '../theme/colors'
-const CategoyItem = ({item}) => {
+
+
+const CategoryItem = ({item}) => {
   return (
-    <View>
-      <Text style= {styles.categoryText}>{item.strDrink}</Text>
+    <View style= {styles.container}>
+      
+      <Text style= {styles.categoryText}>{item}</Text>
     </View>
   )
 }
 
-export default CategoyItem
+export default CategoryItem
 
 const styles = StyleSheet.create({
   categoryText: {
     // fontFamily: "dancing",
     fontSize: 20,
     margin: 2,
-    color: colors.orange,
-    padding: 5,
-    borderColor: colors.navy,
+    color: colors.violet,
+    padding: 10,
+    borderColor: colors.violet,
     borderWidth: 3,
     borderRadius: 20,
-    textAlign: "center"
+    textAlign: "center",
+    paddingVertical: 15,
+
 
  },
+ container: {
+    backgroundColor: colors.lightAqua
+ }
 })
