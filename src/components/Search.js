@@ -1,29 +1,75 @@
-import { StyleSheet, TextInput, View, Pressable } from 'react-native'
+import { StyleSheet, TextInput, View, Pressable, SafeAreaView } from 'react-native'
 import React, {useState} from 'react'
 import { colors } from '../theme/colors'
 import { Feather } from '@expo/vector-icons';
+import Header from './Header';
+
 
 const Search = ()=>{
-    const [text, setText]= useState("");
-    
+    const [ingredient, setIngredient]= useState("");
+    const [name, setName]= useState("");
+    const [letter, setLetter]= useState("");
 
-const clearText=()=>{
-   setText(null); 
-};    
+
+const clearIngredient=()=>{
+   setIngredient(null); 
+}; 
+
+const clearName=()=>{
+    setName(null);
+};
+
+const clearLetter=()=>{
+    setLetter(null);
+};
+
+
+
+
   return (
-    <View style= {styles.container}>
-       <TextInput 
-            style= {styles.input} 
-            onChangeText={(value)=>setText(value)}
-            value={text}
-            placeholder = "Name of cocktail"
-        />   
-
-            <Pressable onPress={() => clearText()}>
+    <SafeAreaView style= {styles.container}>
+       <Header title= "Search menu" /> 
+       <View>
+        <TextInput 
+                style= {styles.input} 
+                onChangeIngredient={(value)=>setIngredient(value)}
+                value={ingredient}
+                
+                placeholder = "Search by ingredient"
+            />   
+            
+            <Pressable onPress={() => clearIngredient()}>
+                <Feather name="x-circle" size={30} color= "#614BC3"/>
+            </Pressable> 
+        </View>
+        <View>
+            <TextInput 
+                style= {styles.input} 
+                onChangeName={(value)=>setName(value)}
+                value={name}
+                
+                placeholder = "Search by name"
+            />   
+            
+            <Pressable onPress={() => clearName()}>
                 <Feather name="x-circle" size={30} color= "#614BC3"/>
             </Pressable>   
-      
-    </View>
+        </View>
+
+        <View>
+            <TextInput 
+                style= {styles.input} 
+                onChangeLetter={(value)=>setLetter(value)}
+                value={letter}
+                
+                placeholder = "Search by letter"
+            />   
+            
+            <Pressable onPress={() => clearLetter()}>
+                <Feather name="x-circle" size={30} color= "#614BC3"/>
+            </Pressable>       
+        </View>
+    </SafeAreaView>
   
   );
 }
@@ -32,12 +78,12 @@ export default Search
 
 const styles = StyleSheet.create({
     container:{
-        
-        backgroundColor: colors.white,
+        paddingVertical:25,
+        backgroundColor: colors.lightAqua,
         justifyContent: "center",
         flexDirection: "row", 
-        alignItems: "center",
-        marginVertical: 10,
+        alignItems: "center"
+        
 
     },
     searchContainer:{

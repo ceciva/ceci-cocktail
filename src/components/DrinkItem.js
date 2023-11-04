@@ -1,13 +1,13 @@
 import { StyleSheet, Text, View , Image, Pressable} from 'react-native'
 import { colors } from '../theme/colors'
 import React from 'react'
-import { drinks } from '../data/drinks'
 
-const DrinkItem = ({item}) => {
+
+const DrinkItem = ({item, navigation}) => {
     
   return (
     <View style= {styles.container}>
-      <Pressable style={ styles.button}>
+      <Pressable style={ styles.button}onPress={()=>navigation.navigate("drinkDetail",{item:item} )}>
 
         <Text style={styles.text}>{item.strDrink}</Text>
         <Image style={styles.images} source= {{uri: item.strDrinkThumb}}/>
@@ -32,8 +32,8 @@ const styles = StyleSheet.create({
 
     },
     text: {
-        // fontFamily: "dancing",
-        fontSize: 15,
+        fontFamily: "dancingBold",
+        fontSize: 20,
         margin: 2,
         color: colors.lightAqua,
         padding: 5,

@@ -1,14 +1,14 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Pressable} from 'react-native'
 import React from 'react'
 import { colors } from '../theme/colors'
 
 
-const CategoryItem = ({item}) => {
+const CategoryItem = ({item, navigation}) => {
   return (
-    <View style= {styles.container}>
+    <Pressable style={styles.container} onPress={()=> navigation.navigate("drinks")}>
       
       <Text style= {styles.categoryText}>{item}</Text>
-    </View>
+    </Pressable>
   )
 }
 
@@ -16,7 +16,7 @@ export default CategoryItem
 
 const styles = StyleSheet.create({
   categoryText: {
-    // fontFamily: "dancing",
+    fontFamily: "dancing",
     fontSize: 20,
     margin: 2,
     color: colors.violet,

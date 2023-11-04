@@ -1,15 +1,26 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, FlatList } from 'react-native'
 import React from 'react'
 import Header from '../components/Header'
-import Categories from '../components/Categories'
+import { categories } from '../data/categories'
 import Search from '../components/Search'
-
-const Home = () => {
+import SearchName from '../components/SearchName'
+import SearchLetter from '../components/SearchLetter'
+import SearchIngredient from '../components/SearchIngredient'
+import CategoryItem from '../components/CategoryItem'
+const Home = ({navigation}) => {
   return (
     <View>
       <Header title= "Search categories"/>
-      <Search/>
-      <Categories/>
+      <SearchName/>
+      <SearchLetter/>
+      <SearchIngredient/>
+      <FlatList
+        data= {categories}
+        keyExtractor= {key => key}
+        renderItem= {({item}) => <CategoryItem navigation= {navigation} item={item} />}
+
+      />
+      
     </View>
   )
 }
