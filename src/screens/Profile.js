@@ -28,14 +28,14 @@ const Profile = () => {
 
       <Pressable onPress={()=> pickImage()}>
       <FontAwesome name="photo" size={50} color={colors.violet} />
-      <Text style={styles.iconsText}>Galería</Text>
+      <Text style={styles.iconsText}>Galery</Text>
       </Pressable>
 
 {/* location */}
 
       <Pressable onPress={()=> getCoords()}>
       <Ionicons name="location-sharp" size={50} color={colors.violet} />
-      <Text style={styles.iconsText}>Mapa</Text>
+      <Text style={styles.iconsText}>Map</Text>
       </Pressable>
   </View>
 

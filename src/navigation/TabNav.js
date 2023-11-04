@@ -30,4 +30,7 @@ const TabNav = () => {
 
 export default TabNav
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    
+    
+})

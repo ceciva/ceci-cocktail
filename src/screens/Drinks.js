@@ -1,15 +1,17 @@
-import { StyleSheet, Text, View, FlatList, Image, Pressable} from 'react-native'
+import { StyleSheet, View, FlatList, Pressable} from 'react-native'
 import React from 'react'
 import Search from '../components/Search';
 import Header from '../components/Header';
-import { drinks } from '../data/drinks';
+import { useSelector } from 'react-redux';
 import DrinkItem from '../components/DrinkItem';
 import { colors } from '../theme/colors';
 import SearchName from '../components/SearchName';
 import { Ionicons } from '@expo/vector-icons';
 
+
 const Drinks = ({navigation}) => {
-  
+  const drinks= useSelector(state=>state.homeSlice.allDrinks);
+  // console.log("drinks desde store:", drinks);
   
   return (
     <View style={ styles.container}>
