@@ -3,35 +3,42 @@ import React from 'react'
 import { colors } from '../theme/colors';
 import { useState } from 'react';
 import { firebase_auth } from '../firebase/firebase_auth';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useDispatch } from 'react-redux';
+import { setIdToken, setUser } from '../redux/slices/authSlice';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-
-const Register = ({navigation}) => {
+const Login = ({navigation}) => {
+    const dispatch = useDispatch();
     const [email, setEmail]= useState("");
     const [password, setPassword]= useState("");
     const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
 
-    const handleRegister= async() =>{
-        
+
+    const handleLogin= async()=>{
         try{
-          const response= await createUserWithEmailAndPassword(firebase_auth, email, password) ;
-          navigation.navigate("login");
+
+          const response = await signInWithEmailAndPassword (firebase_auth, email, password);  
+          AsyncStorage.setItem("userEmail", response.user.email);
+          console.log ("este es el mail ingresado", response.user.email);
+          dispatch (setUser(response.user.email));
+          dispatch (setIdToken(response._tokenResponse.idToken));
 
         }
         catch (error){
           if (email.length === 0){
-            setEmailError(" * Mandatory field!");
+            setEmailError(" * Mandatory fiels!");
 
           } else if(error.message === "Firebase: Error (auth/invalid-email)."){
-            setEmailError("* Invalid mail!");
+            setEmailError("* Invalid mail");
           }
 
           if (password.length === 0){
-            setPasswordError(" *Password is mandatory!");
+            setPasswordError(" *Mandatory field!");
 
           } else if(password.length<6){
-            setPasswordError ("* Password must have at least 6 digits!");
+            setPasswordError (" * password must have at least 6 digits!");
           }
 
         }
@@ -39,18 +46,17 @@ const Register = ({navigation}) => {
 
   return (
 
+    
     <View style={styles.container}>
-      <Text style={styles.title}>Register</Text>
-      
+      <Text style={styles.title}>Login</Text>
       <TextInput
         style= {styles.email}
-        placeholder= "email adress"
-        value={email}
+        placeholder= "email"
+        defaultValue={email}
         onChangeText={(text)=> {
           setEmail(text);
           setEmailError("");
         }}
-        
       />
       {emailError && (
         <Text style= {styles.errorText}>{emailError}</Text>
@@ -59,35 +65,33 @@ const Register = ({navigation}) => {
       <TextInput
         style= {styles.email}
         placeholder= "password"
-        value={password}
+        defaultValue={password}
         onChangeText={(text)=> {
           setPassword(text);
           setPasswordError("");
         }}
-        
       />
       {passwordError && (
         <Text style= {styles.errorText}> {passwordError} </Text>
       )}
 
-      <Pressable onPress={()=> handleRegister()}>
+
+      <Pressable onPress={()=> handleLogin()}>
         <Text style={styles.registrarse}>
-            Register
+            Login
         </Text>
-       </Pressable> 
-
-      <Pressable onPress={()=>navigation.navigate("login")} >
+      </Pressable>  
+      <Pressable onPress={()=>navigation.navigate("register")}>
         <Text style={styles.yaTienes}>
-            Already have an account? Login
-        </Text> 
-       </Pressable>    
-
+            Don't have an account yet? Register
+        </Text>    
+       </Pressable> 
       
     </View>
   )
 }
 
-export default Register
+export default Login
 
 const styles = StyleSheet.create({
     container:{
@@ -126,7 +130,7 @@ const styles = StyleSheet.create({
 
     },
     registrarse:{
-        width: "50%",
+        width: "60%",
         height: 50,
         borderColor: colors.violet,
         borderRadius: 30,
@@ -136,6 +140,7 @@ const styles = StyleSheet.create({
         fontSize:20,
         color: colors.violet,
         fontFamily: "dancing",
+
     },
     errorText:{
       color: "red",

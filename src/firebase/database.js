@@ -1,0 +1,1 @@
+export const firebase_url= "https://ceci-cocktail-default-rtdb.firebaseio.com/";

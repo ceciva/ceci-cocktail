@@ -7,6 +7,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import TabNav from './src/navigation/TabNav';
 import { Provider } from 'react-redux';
 import { store } from './src/redux/store';
+import MainNav from './src/navigation/MainNav';
+import Login from './src/screens/Login';
+import Register from './src/screens/Register';
+import AuthNav from './src/navigation/AuthNav';
 
 export default function App() {
 
@@ -21,15 +25,19 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <NavigationContainer>
+      
         {/* <Home/>  */}
         {/* <Search/>        */}
         {/* <Drinks category= "strCategory"/> */}
         {/* <DrinkItem/> */}
         {/* <DrinkDetail/> */}
-        <TabNav/>
-        
-      </NavigationContainer>
+        {/* <TabNav/> */}
+        {/* <MainNav/> */}
+        {/* <Login/> */}
+        {/* <Register/> */}
+        {/* <AuthNav/> */}
+        <MainNav/>
+      
       </Provider>
   );
 }

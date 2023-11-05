@@ -26,7 +26,8 @@ export const cocktailApi= createApi({
         cocktailWithOutAlcohol: builder.query({
             query: ()=>`filter.php?a=Non_Alcoholic`,
         }),
+        
     }),
 });
 
-export const { useSearchByNameQuery, useSearchByLetterQuery, useSearchByIngrdientQuery, useCocktailWithAlcoholQuery, usecocktailWithOutAlcoholQuery}= cocktailApi;
+export const { useSearchByNameQuery, useSearchByLetterQuery, useSearchByIngrdientQuery, useCocktailWithAlcoholQuery, useCocktailWithOutAlcoholQuery, useGetImageQuery, usePutImageMutation}= cocktailApi;

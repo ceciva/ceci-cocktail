@@ -11,8 +11,8 @@ import { useSelector } from 'react-redux'
 import { useCocktailWithAlcoholQuery } from '../services/cocktailApi'
 
 const Home = ({navigation}) => {
-const datos= useCocktailWithAlcoholQuery();
-console.log(JSON.stringify(datos, null, " "));
+const {data, isloading, isError,erro} = useCocktailWithAlcoholQuery();
+console.log("data desde api:",JSON.stringify( data, null, " "));
 
   const categories= useSelector(state=>state.homeSlice.allCategories);
   // console.log("categorías desde store:", categories);
